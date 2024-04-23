@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.showItem:
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                     Task tTask = tasks.get(currentPosition);
-                    String tMsg = "Name: " + tTask.getName() + "\n" + "Description: " + tTask.getDescription();
+                    String tMsg = "Name: " + tTask.getName() + "\n" + "Description: " + tTask.getDescription() + "\n" + "Priority: " + tTask.getPriority();
                     builder.setTitle("Task details");
                     builder.setMessage(tMsg);
                     builder.setPositiveButton("OK", null);
@@ -148,6 +148,24 @@ public class MainActivity extends AppCompatActivity {
                     taskRecyclerViewAdapter.notifyDataSetChanged();
                     mode.finish();	//encerra o action mode
                     return true;
+
+                case R.id.prioritizeItem:
+                    Task selectedTask = tasks.get(currentPosition);
+                    switch (selectedTask.getPriority()) {
+                        case low:
+                            selectedTask.setPriority(TaskPriority.medium);
+                            break;
+                        case medium:
+                            selectedTask.setPriority(TaskPriority.high);
+                            break;
+                        case high:
+                            Toast.makeText(MainActivity.this, "This task already has high priority.", Toast.LENGTH_SHORT).show();
+                            break;
+                    }
+                    taskRecyclerViewAdapter.notifyDataSetChanged();
+                    mode.finish();  // encerra o action mode
+                    return true;
+
             }
             return false;
         }

@@ -4,4 +4,9 @@
     <string name="lbl_delete">Delete task</string>
     <string name="lbl_totop">Move task to top</string>
     <string name="lbl_toend">Move task to button</string>
+    <string name="task_low_priority">Low</string>
+    <string name="task_medium_priority">Medium</string>
+    <string name="task_high_priority">High</string>
+    <string name="task_priority">Priority</string>
+    <string name="prioritize">Prioritize</string>
 </resources>
